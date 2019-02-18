@@ -51,7 +51,7 @@ int main(){
 	cout <<"\nValor total: R$ "<<controle->calculaTotalDespesas()<<endl;
 
 
-	controle->~ControleDeGastos();
+	delete controle;
 	cout <<"==FIIMMMMMMMMMMMMMMM"<<endl;
 
 }

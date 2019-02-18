@@ -36,6 +36,8 @@ int main(){
 		cout << "Deseja continuar? \n1 - Sim\nOutra tecla - Não\nEscolha: ";
 		cin >> input;
 
+		delete despesa;
+
 	}
 	cout << "Total de Despesas: " << controle->calculaTotalDePagamentos() << endl;
 
@@ -50,7 +52,9 @@ int main(){
 
 	cout <<"\nValor total: R$ "<<controle->calculaTotalDePagamentos()<<endl;
 
-	controle->~ControleDePagamentos();
+
+	delete controle;
+
 	cout <<"==FIIMMMMMMMMMMMMMMM"<<endl;
 
 }
