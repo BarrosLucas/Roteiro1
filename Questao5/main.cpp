@@ -50,6 +50,8 @@ int main(){
 
 	cout <<"\nValor total: R$ "<<controle->calculaTotalDespesas()<<endl;
 
+
+	controle->~ControleDeGastos();
 	cout <<"==FIIMMMMMMMMMMMMMMM"<<endl;
 
 }
