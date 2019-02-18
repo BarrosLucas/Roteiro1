@@ -6,8 +6,8 @@
  */
 #include <iostream>
 #include <vector>
-#include "Despesa.h"
-#include "ControleDeGastos.h"
+#include "Pagamente.h"
+#include "ControleDePagamentos.h"
 
 
 using namespace std;
@@ -16,39 +16,39 @@ void setValues(double *valor, string *tipoDeDespesa);
 void setValues(string *tipoDeDespesa);
 
 int main(){
-	vector<Despesa> despesas;
+	vector<Pagamente> despesas;
 
 	int input = 1;
 
 	double valor;
-	string tipoDeDespesa;
+	string pessoa;
 
-	ControleDeGastos *controle = new ControleDeGastos();
+	ControleDePagamentos *controle = new ControleDePagamentos();
 
 	while(input == 1){
 		cout << "==NOVA DESPESA=="<<endl;
-		setValues(&valor,&tipoDeDespesa);
+		setValues(&valor,&pessoa);
 
-		Despesa *despesa = new Despesa(valor,tipoDeDespesa);
+		Pagamente *despesa = new Pagamente(valor,pessoa);
 		despesas.push_back(*despesa);
 
-		controle->setDespesas(despesas);
+		controle->setPagamentos(despesas);
 		cout << "Deseja continuar? \n1 - Sim\nOutra tecla - Não\nEscolha: ";
 		cin >> input;
 
 	}
-	cout << "Total de Despesas: " << controle->calculaTotalDespesas() << endl;
+	cout << "Total de Despesas: " << controle->calculaTotalDePagamentos() << endl;
 
-	cout << "Deseja conferir algum tipo de despesa? \n1 - Sim\nOutra tecla - Não\nEscolha: ";
+	cout << "Deseja conferir alguma pessoa? \n1 - Sim\nOutra tecla - Não\nEscolha: ";
 	cin >> input;
 
 	if(input == 1){
-		setValues(&tipoDeDespesa);
-		cout << ((controle->existeDespesaDoTipo(tipoDeDespesa))? "Existe esse tipo de despesa": "Não existe esse tipo de despesa") << endl;
+		setValues(&pessoa);
+		cout << ((controle->exitePagamentoParaFuncionario(pessoa))? "Existe pagamentos para essa pessoa": "Não existe pagamentos para essa pessoa") << endl;
 
 	}
 
-	cout <<"\nValor total: R$ "<<controle->calculaTotalDespesas()<<endl;
+	cout <<"\nValor total: R$ "<<controle->calculaTotalDePagamentos()<<endl;
 
 	cout <<"==FIIMMMMMMMMMMMMMMM"<<endl;
 
@@ -63,7 +63,7 @@ void setValues(double *valor, string *tipoDeDespesa){
 	cin.clear();
 	fflush(stdin);
 
-	cout << "Tipo de Despesa: ";
+	cout << "Nome da Pessoa: ";
 	getline(cin,*tipoDeDespesa);
 
 	cin.clear();
@@ -73,7 +73,7 @@ void setValues(string *tipoDeDespesa){
 	cin.clear();
 	fflush(stdin);
 
-	cout << "Tipo de Despesa: ";
+	cout << "Nome da Pessoa: ";
 	getline(cin,*tipoDeDespesa);
 
 	cin.clear();
